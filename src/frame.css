@@ -24,7 +24,7 @@
 .cl-topbar__brand { display: flex; align-items: center; gap: var(--space-2); text-decoration: none; color: var(--ink); }
 .cl-topbar__brand .cl-logo { height: 24px; }
 .cl-topbar__app { font: 600 16px/22px var(--font-display); }
-.cl-topbar__doc { display: flex; align-items: center; gap: var(--space-2); padding-left: var(--space-3); margin-left: var(--space-1); border-left: 1px solid var(--line); min-width: 0; }
+.cl-topbar__doc { display: flex; align-items: center; gap: var(--space-2); padding-left: var(--space-3); margin-left: var(--space-1); border-left: 1px solid var(--line); min-width: 0; flex: 0 1 auto; }
 .cl-topbar__title { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 260px; }
 .cl-topbar__status { color: var(--ink-muted); font-size: 12px; display: inline-flex; align-items: center; gap: var(--space-1); }
 .cl-topbar__status .cl-icon { width: 14px; height: 14px; color: var(--success); }
@@ -90,7 +90,9 @@
 .cl-muted { color: var(--ink-muted); }
 
 /* The whole frame */
-.cl-frame { display: grid; grid-template-rows: var(--frame-topbar) 1fr; height: 100vh; height: 100dvh; min-height: 0; }
+.cl-frame { display: grid; grid-template-rows: var(--frame-topbar) 1fr; grid-template-columns: minmax(0, 1fr); height: 100vh; height: 100dvh; min-height: 0; }
+/* Grid children may not grow past the window: a long title or toolbar shrinks instead of pushing the rest off screen. */
+.cl-frame > * { min-width: 0; }
 .cl-frame__body { display: flex; min-height: 0; }
 .cl-frame__main { flex: 1; min-width: 0; overflow: auto; background: var(--bg); }
 
@@ -187,3 +189,13 @@ button.cl-newcard { border: 0; background: none; padding: 0; text-align: left; c
 .cl-topbar__title--input:hover { border-color: var(--line); }
 .cl-topbar__title--input:focus { outline: none; border-color: var(--accent); background: var(--surface); }
 [dir="rtl"] .cl-topbar__status svg, [dir="rtl"] .cl-rail__badge { margin-left: 0; }
+
+/* Phones: the logo stands for the app, and the document name gives way so search, the primary action and the menus stay in reach. */
+@media (max-width: 600px) {
+  .cl-topbar { gap: var(--space-2); padding-inline: var(--space-2); }
+  .cl-topbar__app { display: none; }
+  .cl-topbar__spacer { flex: 0 0 0; }
+  .cl-topbar__doc { flex: 1 1 0; }
+  .cl-topbar__title, .cl-topbar__title--input { max-width: 100%; width: 100%; }
+  .cl-topbar .cl-btn--primary { padding: 0 var(--space-3); }
+}
