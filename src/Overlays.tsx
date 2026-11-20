@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { t as tx } from './text';
 import { useFrame } from './context';
 import { Button } from './Button';
 import { Icon } from './icons';
@@ -14,7 +15,7 @@ export function Overlays() {
             <Icon name={t.tone === 'error' ? 'warning' : t.tone === 'success' ? 'check' : 'info'} />
             <span>{t.text}</span>
             {t.action && <button type="button" className="cl-toast__action" onClick={() => { dismissToast(t.id); t.action?.run(); }}>{t.action.label}</button>}
-            <button type="button" className="cl-toast__close" aria-label="Dismiss" onClick={() => dismissToast(t.id)}><Icon name="x" size={16} /></button>
+            <button type="button" className="cl-toast__close" aria-label={tx('Dismiss')} onClick={() => dismissToast(t.id)}><Icon name="x" size={16} /></button>
           </div>
         ))}
       </div>
@@ -35,7 +36,7 @@ function DialogView({ dialog, close }: { dialog: NonNullable<ReturnType<typeof u
   const submit = () => {
     if (dialog.kind === 'confirm') { close(); dialog.resolve(true); return; }
     const v = value.trim();
-    const err = v === '' ? 'Enter a name' : dialog.opts.validate?.(v) ?? null;
+    const err = v === '' ? tx('Enter a name') : dialog.opts.validate?.(v) ?? null;
     if (err) { setError(err); return; }
     close(); dialog.resolve(v);
   };
@@ -51,7 +52,7 @@ function DialogView({ dialog, close }: { dialog: NonNullable<ReturnType<typeof u
           </label>
         )}
         <div className="cl-dialog__actions">
-          <Button variant="ghost" onClick={cancel}>Cancel</Button>
+          <Button variant="ghost" onClick={cancel}>{tx('Cancel')}</Button>
           <Button ref={ok} type="submit" variant={dialog.kind === 'confirm' && dialog.opts.danger ? 'danger' : 'primary'}>{dialog.opts.confirm}</Button>
         </div>
       </form>

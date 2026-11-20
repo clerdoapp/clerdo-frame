@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { t } from './text';
 import { Button } from './Button';
 import { Icon, type IconName } from './icons';
 
@@ -17,9 +18,9 @@ export function RailItem({ icon, label, active, onClick, href, badge }: RailItem
 }
 
 /** The left rail: an optional orange New button, items, and items pinned to the bottom. */
-export function Rail({ onNew, newLabel = 'New', children, bottom }: { onNew?: () => void; newLabel?: string; children: ReactNode; bottom?: ReactNode }) {
+export function Rail({ onNew, newLabel, children, bottom }: { onNew?: () => void; newLabel?: string; children: ReactNode; bottom?: ReactNode }) {
   return (
-    <nav className="cl-rail" aria-label="Sections">
+    <nav className="cl-rail" aria-label={t('Sections')}>
       {onNew && <button type="button" className="cl-rail__new" aria-label={newLabel} title={newLabel} onClick={onNew}><Icon name="plus" /></button>}
       {children}
       <div className="cl-rail__spacer" />
@@ -34,7 +35,7 @@ export function Panel({ title, side = 'tool', onClose, children, actions }: { ti
     <aside className={side === 'side' ? 'cl-panel cl-panel--side' : 'cl-panel'} aria-label={title}>
       <div className="cl-panel__head">
         <span>{title}</span>
-        <span className="cl-panel__actions">{actions}{onClose && <Button variant="ghost" icon="x" iconOnly label="Close panel" onClick={onClose} />}</span>
+        <span className="cl-panel__actions">{actions}{onClose && <Button variant="ghost" icon="x" iconOnly label={t('Close panel')} onClick={onClose} />}</span>
       </div>
       <div className="cl-panel__body">{children}</div>
     </aside>
@@ -84,6 +85,6 @@ export function EmptyState({ icon, title, body, action }: { icon: IconName; titl
 export const greetingFor = (name: string, now = new Date()): string => {
   const h = now.getHours();
   const first = name.trim().split(/\s+/)[0] ?? '';
-  const part = h < 5 ? 'Good evening' : h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
+  const part = h < 5 ? t('Good evening') : h < 12 ? t('Good morning') : h < 18 ? t('Good afternoon') : t('Good evening');
   return first ? `${part}, ${first}` : part;
 };

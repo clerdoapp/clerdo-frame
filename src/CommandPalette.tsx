@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { t } from './text';
 import { filterCommands, useFrame } from './context';
 import { Icon } from './icons';
 
@@ -15,7 +16,7 @@ export function CommandPalette({ open, onClose, placeholder }: { open: boolean; 
   const run = (i: number) => { const c = list[i]; if (c) { onClose(); c.run(); } };
   return (
     <div className="cl-scrim" onPointerDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="cl-palette" role="dialog" aria-modal="true" aria-label="Search and commands">
+      <div className="cl-palette" role="dialog" aria-modal="true" aria-label={t('Search and commands')}>
         <div className="cl-palette__field">
           <Icon name="search" />
           <input
@@ -23,7 +24,7 @@ export function CommandPalette({ open, onClose, placeholder }: { open: boolean; 
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder={placeholder}
-            aria-label="Search"
+            aria-label={t('Search')}
             role="combobox"
             aria-expanded="true"
             aria-controls="cl-palette-list"
@@ -38,7 +39,7 @@ export function CommandPalette({ open, onClose, placeholder }: { open: boolean; 
           <kbd>Esc</kbd>
         </div>
         <ul id="cl-palette-list" className="cl-palette__list" role="listbox">
-          {list.length === 0 && <li className="cl-palette__empty">No matches</li>}
+          {list.length === 0 && <li className="cl-palette__empty">{t('No matches')}</li>}
           {list.map((c, i) => (
             <li key={c.id} id={`cl-cmd-${i}`} role="option" aria-selected={i === active} className="cl-palette__item" onPointerMove={() => setActive(i)} onClick={() => run(i)}>
               <Icon name={c.icon ?? 'chevronRight'} />

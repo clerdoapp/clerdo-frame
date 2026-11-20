@@ -1,6 +1,6 @@
 {
   "name": "@clerdo/frame",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "The shared Clerdo frame: top bar, rail, panels, home screen, app switcher and commands for every Clerdo web app.",
   "license": "UNLICENSED",
   "private": true,
