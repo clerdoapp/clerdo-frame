@@ -59,9 +59,13 @@ export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'name'> {
   size?: number;
 }
 
+/** Icons that point along the reading direction mirror in right-to-left languages. */
+const DIRECTIONAL = new Set<IconName>(['chevronRight', 'logout', 'move']);
+
 export function Icon({ name, size = 20, className, ...rest }: IconProps) {
+  const cls = ['cl-icon', DIRECTIONAL.has(name) ? 'cl-flip' : '', className ?? ''].filter(Boolean).join(' ');
   return (
-    <svg className={className ? `cl-icon ${className}` : 'cl-icon'} width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false" {...rest}>
+    <svg className={cls} width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false" {...rest}>
       <path d={PATHS[name]} />
     </svg>
   );

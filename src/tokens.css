@@ -87,3 +87,9 @@
   --font-sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
 }
+
+/* Arabic: system faces that carry Arabic well; Latin text inside keeps the brand faces first. */
+:root:lang(ar) {
+  --font-sans: "Figtree", "Segoe UI", "Geeza Pro", "SF Arabic", "Noto Sans Arabic", Tahoma, system-ui, sans-serif;
+  --font-display: "Outfit", "Segoe UI", "Geeza Pro", "SF Arabic", "Noto Sans Arabic", Tahoma, system-ui, sans-serif;
+}

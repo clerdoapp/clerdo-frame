@@ -4,6 +4,7 @@ import { Icon } from './icons';
 import { Popover } from './Popover';
 import { initials, type ClerdoUser } from './session';
 import { useTheme, type ThemeChoice } from './theme';
+import { LANGUAGES, getLanguage, setLanguage } from './i18n';
 
 export function AccountMenu({ user, onSignOut }: { user: ClerdoUser; onSignOut: () => void }) {
   const { choice, setChoice } = useTheme();
@@ -12,7 +13,7 @@ export function AccountMenu({ user, onSignOut }: { user: ClerdoUser; onSignOut: 
     <Popover
       label={t('Account')}
       trigger={({ open, toggle, ref }) => (
-        <button ref={ref} type="button" className="cl-avatar" aria-label={`Account: ${user.name}`} aria-expanded={open} onClick={toggle}>
+        <button ref={ref} type="button" className="cl-avatar" aria-label={t('Account: {name}', { name: user.name })} aria-expanded={open} onClick={toggle}>
           {user.avatar ? <img src={user.avatar} alt="" /> : initials(user.name)}
         </button>
       )}
@@ -28,6 +29,12 @@ export function AccountMenu({ user, onSignOut }: { user: ClerdoUser; onSignOut: 
           <div className="cl-seg" role="radiogroup" aria-label={t('Appearance')}>
             {themes.map(([c, l]) => (
               <button key={c} type="button" role="radio" aria-checked={choice === c} className="cl-seg__item" onClick={() => setChoice(c)}>{l}</button>
+            ))}
+          </div>
+          <div className="cl-menu__label">{t('Language')}</div>
+          <div className="cl-seg" role="radiogroup" aria-label={t('Language')}>
+            {LANGUAGES.map((l) => (
+              <button key={l.id} type="button" role="radio" lang={l.id} aria-checked={getLanguage() === l.id} className="cl-seg__item" onClick={() => { if (getLanguage() !== l.id) setLanguage(l.id); }}>{l.name}</button>
             ))}
           </div>
           <div className="cl-menu__sep" />

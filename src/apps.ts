@@ -33,7 +33,7 @@ export const CLERDO_APPS: ReadonlyArray<ClerdoApp> = [
   { id: 'survey', name: 'Survey', marketingName: 'Clerdo Survey', division: 'work', url: 'https://survey.clerdo.app', tagline: 'Forms and surveys', glyph: 'dark', upcoming: true },
   { id: 'scrap', name: 'Scrap', marketingName: 'Clerdo Scrap', division: 'work', url: 'https://scrap.clerdo.app', tagline: 'Notes', glyph: 'dark', upcoming: true },
   { id: 'zoetra', name: 'Zoetra', marketingName: 'Zoetra', division: 'creative', url: 'https://zoetra.clerdo.app', tagline: 'Video editing', glyph: 'light' },
-  { id: 'vector', name: 'Vector', marketingName: 'Clerdo Vector', division: 'creative', url: 'https://github.com/clerdoapp/clerdovector/releases/latest', tagline: 'Illustration and drawing', glyph: 'light' },
+  { id: 'vector', name: 'Vector', marketingName: 'Clerdo Vector', division: 'creative', url: 'https://clerdo.app/vector', tagline: 'Illustration and drawing', glyph: 'light' },
   { id: 'core', name: 'Core', marketingName: 'Clerdo Core', division: 'business', url: 'https://cm.clerdo.app', tagline: 'Run your company', glyph: 'light' },
   { id: 'locker', name: 'Locker', marketingName: 'Clerdo Locker', division: 'platform', url: 'https://locker.clerdo.app', tagline: 'Your files', glyph: 'dark' },
   { id: 'account', name: 'Account', marketingName: 'Clerdo Account', division: 'platform', url: 'https://account.clerdo.app', tagline: 'Your account and family', glyph: 'light' },

@@ -12,5 +12,6 @@ export { useFrame, FrameProvider, filterCommands, type Command, type Toast } fro
 export { useTheme, resolveTheme, type Theme, type ThemeChoice } from './theme';
 export { useSession, fetchMe, signIn, signInUrl, initials, type Me, type ClerdoUser, type SessionState } from './session';
 export { CLERDO_APPS, CLERDO_DIVISIONS, CLERDO_HOME, appById, switcherGroups, type ClerdoApp, type ClerdoAppId, type ClerdoDivision } from './apps';
-export { setFrameTranslator, t as frameText, modKey, type Translate } from './text';
+export { setFrameTranslator, t as frameText, modKey, FRAME_CATALOGS, type Translate } from './text';
+export { LANGUAGES, applyLanguage, createTranslator, dirOf, getLanguage, locale, setLanguage, useLanguage, type Catalog, type Lang, type Vars } from './i18n';
 export { AccountMenu } from './AccountMenu';
