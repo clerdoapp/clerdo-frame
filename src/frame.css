@@ -46,9 +46,9 @@
 .cl-switcher__foot { margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--line); display: flex; justify-content: space-between; color: var(--accent); font-weight: 500; font-size: 13px; }
 
 /* App icon: one shape for every app, filled with its identity color. Replace with the drawn icon set. */
-.cl-appicon { --c: var(--orange); width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--c); position: relative; overflow: hidden; display: grid; place-items: center; color: #fff; font: 600 17px/1 var(--font-display); }
-.cl-appicon::after { content: ""; position: absolute; right: 0; bottom: 0; width: 46%; height: 46%; background: rgba(0,0,0,.18); border-top-left-radius: 100% 100%; }
-.cl-appicon > span { position: relative; z-index: 1; }
+.cl-appicon { display: block; flex: none; object-fit: contain; user-select: none; }
+/* Dark icons (Account, Kelvo) would melt into a dark theme: a faint ring keeps their edge. */
+:root[data-theme="dark"] .cl-appicon { border-radius: 24%; box-shadow: 0 0 0 1px rgba(247, 245, 240, .12); }
 
 /* Rail */
 .cl-rail { width: var(--frame-rail); background: var(--surface-sunken); border-right: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; gap: var(--space-1); padding: var(--space-3) 0; }
@@ -86,7 +86,7 @@
 .cl-files tr:last-child td { border-bottom: 0; }
 .cl-files tbody tr:hover td { background: var(--surface-sunken); }
 .cl-files__name { display: flex; align-items: center; gap: var(--space-3); font-weight: 500; }
-.cl-files__name .cl-appicon { width: 24px; height: 24px; border-radius: var(--radius-sm); font-size: 11px; }
+.cl-files__name .cl-appicon { width: 24px; height: 24px; }
 .cl-muted { color: var(--ink-muted); }
 
 /* The whole frame */
