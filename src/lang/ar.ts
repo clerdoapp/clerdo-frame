@@ -22,6 +22,8 @@ const ar: Readonly<Record<string, string>> = {
   'Sign in with Clerdo': 'تسجيل الدخول باستخدام Clerdo',
   'Sign in': 'تسجيل الدخول',
   'Sign out': 'تسجيل الخروج',
+  'Privacy': 'الخصوصية',
+  'Terms': 'الشروط',
   'Skip to content': 'تخطَّ إلى المحتوى',
   '{tagline}, with your Clerdo account.': '{tagline}، باستخدام حسابك في Clerdo.',
   'Account: {name}': 'الحساب: {name}',

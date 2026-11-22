@@ -39,6 +39,11 @@ export function AccountMenu({ user, onSignOut }: { user: ClerdoUser; onSignOut: 
           </div>
           <div className="cl-menu__sep" />
           <button type="button" className="cl-menu__item" onClick={() => { close(); onSignOut(); }}><Icon name="logout" />{t('Sign out')}</button>
+          <div className="cl-account__legal">
+            <a href="https://clerdo.app/privacy" target="_blank" rel="noopener noreferrer">{t('Privacy')}</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://clerdo.app/terms" target="_blank" rel="noopener noreferrer">{t('Terms')}</a>
+          </div>
         </div>
       )}
     </Popover>
